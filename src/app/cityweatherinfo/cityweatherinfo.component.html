@@ -1,0 +1,27 @@
+<button type="button" [routerLink]="['/']" class="btn btn-success btn-arrow-left">Back</button>
+<h1> {{cityName}} </h1>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+            <th> Time </th>
+            <th> Description </th>
+            <th> Wind Speed (Km/Hr) </th>
+            <th> Temparature (Celsius) </th>
+            <th> Humidity (%) </th>
+            <th> Pressure(hPa) </th>
+        </tr>
+        <tr *ngFor="let city of cityList">
+            <td>{{city.dt_txt | timeConverter}}</td>
+            <td>{{ city.weather[0].description}}</td>
+            <td>{{city.wind.speed | speedConverter}}</td>
+            <td>{{city.main.temp | tempConverter}}</td>
+            <td>{{city.main.humidity}}</td>
+            <td>{{city.main.pressure}}</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <h1> Temparature Graph</h1>
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+</div>

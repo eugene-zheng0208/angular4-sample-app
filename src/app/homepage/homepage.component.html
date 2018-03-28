@@ -1,0 +1,15 @@
+<section class="weather-list">
+    <article class="weather-element" *ngFor="let city of cityWeatherData">
+        <div class="col-1">
+            <h3>{{city.name}}</h3>
+            <p class="info">{{city.weather[0].description}}</p>
+        </div>
+        <div class="col-2">
+            <span class="temperature">Temp:{{city.main.temp  | tempConverter}}</span><br/>
+            <span class="temperature">Wind Speed:{{city.wind.speed  | speedConverter}} Km/Hr</span>
+            <br/>
+            <a class="info" (click)="gotoCityInfo(city.id)">More Info</a>
+        </div>
+
+    </article>
+</section>
